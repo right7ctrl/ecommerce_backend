@@ -9,7 +9,7 @@ router.post('/list', async (req, res) => {
     console.log(value);
     if (error === undefined) {
         try {
-            pool.query("SELECT COUNT(*) count FROM product WHERE isActive = 1", (cerr, cres, cfields) => {
+            pool.query("SELECT COUNT(*) as count FROM product WHERE isActive = 1", (cerr, cres, cfields) => {
                 pool.releaseConnection;
 
                 if (!cerr) {
@@ -62,7 +62,7 @@ router.post('/list/category', async (req, res) => {
     console.log(value);
     if (error === undefined) {
         try {
-            pool.query("SELECT COUNT(*) count FROM product WHERE isActive = 1 AND category_id = ?",[req.body.category_id], (cerr, cres, cfields) => {
+            pool.query("SELECT COUNT(*) as count FROM product WHERE isActive = 1 AND category_id = ?",[req.body.category_id], (cerr, cres, cfields) => {
                 pool.releaseConnection;
 
                 if (!cerr) {
@@ -119,7 +119,7 @@ router.post('/list/related', async (req, res) => {
     console.log(value);
     if (error === undefined) {
         try {
-            pool.query("SELECT COUNT(*) count FROM product WHERE isActive = 1 AND category_id = ?",[req.body.category_id], (cerr, cres, cfields) => {
+            pool.query("SELECT COUNT(*) as count FROM product WHERE isActive = 1 AND category_id = ?",[req.body.category_id], (cerr, cres, cfields) => {
                 pool.releaseConnection;
 
                 if (!cerr) {
